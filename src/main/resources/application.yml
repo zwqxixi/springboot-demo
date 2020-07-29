@@ -1,6 +1,6 @@
 spring:
   datasource:
-    url: jdbc:mysql://docker_mysql:3306/it_student?serverTimezone=UTC&useSSL=false&allowPublicKeyRetrieval=true
+    url: jdbc:mysql://192.168.118.131:3306/it_student?serverTimezone=UTC&useSSL=false&allowPublicKeyRetrieval=true
     username: root
     password: 123456
     driver-class-name: com.mysql.cj.jdbc.Driver
@@ -11,7 +11,7 @@ spring:
     min-evictable-idle-time-millis: 1800000
   redis:
     database: 0
-    host: docker_redis
+    host: 192.168.118.131
     port: 6379
     password:
     jedis:
@@ -20,8 +20,8 @@ spring:
         max-wait: -1
         max-idle: 8
         min-idle: 0
-    #timeout: 10000
-  # 缓存配置读取
+    timeout: 10000
+  #缓存配置读取
   cache:
     type: ehcache
     ehcache:
@@ -31,7 +31,7 @@ spring:
     auto: true
   #kafka配置读取
   kafka:
-    bootstrap-servers: 192.168.220.128:9092,192.168.220.129:9092,192.168.220.130:9092
+    bootstrap-servers: 192.168.118.128:9092,192.168.118.129:9092,192.168.118.130:9092
     producer:
       key-serializer:  org.apache.kafka.common.serialization.StringSerializer
       value-serializer:  org.apache.kafka.common.serialization.StringSerializer
@@ -41,35 +41,29 @@ spring:
       auto-commit-interval: 100
       key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
       value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
-  #rabbitmq
-  rabbitmq:
-    addresses: 192.168.220.131
-    port: 5672
-    username: admin
-    password: admin
-    ##一个虚拟主机持有一组交换机,队列和绑定，用户只能在虚拟主机这个粒度上进行权限控制
-    virtual-host: my_vhost
-  #elasticsearch配置读取
-  data:
-    elasticsearch:
-      cluster-name: myes
-      cluster-nodes: 192.168.220.128:9300
-      repositories:
-        enabled: true
-  main:
-    allow-bean-definition-overriding: true
+#######rabbitmq
+#  rabbitmq:
+#    addresses: 192.168.220.131
+#    port: 5672
+#    username: admin
+#    password: admin
+#    ##一个虚拟主机持有一组交换机,队列和绑定，用户只能在虚拟主机这个粒度上进行权限控制
+#    virtual-host: my_vhost
+#####elasticsearch配置读取
+#  data:
+#    elasticsearch:
+#      cluster-name: myes
+#      cluster-nodes: 192.168.220.128:9300
+#      repositories:
+#        enabled: true
+#  main:
+#    allow-bean-definition-overriding: true
 #mybatis相关
+#####apollo相关
+#app:
+#  id: SpringBootDemo
+#apollo:
+#  meta: ${APOLLO_CONFIG_SERVICE_URL:http://192.168.118.128:8080}
 mybatis:
   type-aliases-package: com.itstudent.springbootdemo.model.**
   mapper-locations: classpath:mapper/*.xml
-#apollo相关
-app:
-  id: SpringBootDemo
-apollo:
-  meta: ${APOLLO_CONFIG_SERVICE_URL:http://192.168.118.128:8080}
-#alipay
-aliPay:
-  appId: 2021001146638382
-  privateKey: MIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQC5+/oum27YUnri32bU2L7X72e44kUJNl2IlVlJI1aXLTkwAN7ZlSHmZQ/UKERptKMYsMc9Oh7BQ5/FZX6zWu4TPni7967LnQBdXMLNrnZWQ9N6tEMM3wiLYGb/pnwPtoH0jHrnhLLXXwpwg59gVGfw7DiAO7znGy249JBPihB8H/j5EDdm1l2WM5eLjB55Jv9Ul4/aIJ+xkB2YusaCbx2JcIls/Q7s4x6PaxJSWBo94fTvEfPqzzB+MO2OO5gsPFrSXFeHrvh//ggWv8OsQWSKZAShSOY0xuQsms3+Gz0ULdIuSq9z38NHs+SjpLqnzncWeBtsmuTrfy6RJOwt/T+bAgMBAAECggEANWcW5T8YSuEUDATdwAwkcFh7zeiarhSAMvG/W3LcMDh6DUCSvKNHwqIOM3sEed22XyaTbw87OX8zZzjHcrSPW9M6U67A8BI6wpQaE3ke3ZJILRmJjy6Tg4HA0XN6eACNvCyCNewydgkCNGB26PATkGgjqR5+FVYGgO8oaM5aAWmmbn7mfk5epdzOc/nQNEHatsx7WPjyvd0JscqcnOJ8F/roSmPcn6yXT4xwNINJa4NKB44EPSJ07Ci+/45E9ai3SQut7fMjATBtKsp+ZSKtkJuBq29PdSv6CSDc31adJW7gYuhnxKNHXkbAulM1bb9Mt2XACDcvyVHemFv6p6Ox4QKBgQD4x0TZH1QZoLl8BHXEId8YxEVMXorgceEGNrVigVHnD9KX8fXyYbxaQRoFrGgNAbhaBTrx4tqM5B5NaUyTCZFi30K+Dh7Dt81QDO1K/SFkk1Eo0mpA71D9wyvnSA90Nf8lhhPrhptNGGhd3NaPgs+jH/073rOmbS8LE1rp3dVmOQKBgQC/YhIKiz645UuvuA7eRYNkLJZ42FU9pWPy6bQBi6RsVy9rtVwReemJEn1Y7SzV1CL/89MXwS2coNMpKNyQ52LTyx5LEQQEgrV2O54NfVjT7NQx4aFAkWffGuYSfG0uwt18/dqaSM7eXsV1gxXkZAbEMyy2Y5sB3fskW+FP/0L0cwKBgCaCqky2Bc3FzJC/G//VgnSSBWwyAmuGFWBh3ag2/pe3IlF1Gi6AJKkQBNg1/RFuX7xHrP0+sbg3o9013K2yQHg+uVU0WFzRug2XQrBmCOJJz7lzARG2OiJeMRCnXgUOSsXjQHgoKShBC/7jra8ff8bvr8Kx0buEkVC0mVE0jtE5AoGACYCfELL1PEz2QxVKd7LP4UttdTaYlOT/X3JHI8SBN3fkvN5WYe/BrrKiUqYEEeHkkvzSQF2xHBPIKEUFHpS+jXGKYYPIxUiQJfyzzkuo+2zI5GkljoUpuSQmxEg1S5sVUD1yezKeQuBFwZ3umlZ1F4zK7YtoiOEytQ1y1HwCIQ0CgYEAnmPq/F5MCxQjkHd1UQ9KvPbLWWRmd272AvC984ZLyAwsuqj15BTU6FrJRyZ+/ozJ30R886IETEywpSl6LkXIgar842EiP8LLTQJSZCEBurN79TZCTc2rGgnfp8jprLJqndQwr9WrNDyauSXuvVbtBTD1dxcvdKF5fSJNx8hJmms=
-  publicKey: MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAufv6Lptu2FJ64t9m1Ni+1+9nuOJFCTZdiJVZSSNWly05MADe2ZUh5mUP1ChEabSjGLDHPToewUOfxWV+s1ruEz54u/euy50AXVzCza52VkPTerRDDN8Ii2Bm/6Z8D7aB9Ix654Sy118KcIOfYFRn8Ow4gDu85xstuPSQT4oQfB/4+RA3ZtZdljOXi4weeSb/VJeP2iCfsZAdmLrGgm8diXCJbP0O7OMej2sSUlgaPeH07xHz6s8wfjDtjjuYLDxa0lxXh674f/4IFr/DrEFkimQEoUjmNMbkLJrN/hs9FC3SLkqvc9/DR7Pko6S6p853FngbbJrk638ukSTsLf0/mwIDAQAB
-  notifyUrl:

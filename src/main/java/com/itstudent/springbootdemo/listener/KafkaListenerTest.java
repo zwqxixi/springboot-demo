@@ -12,9 +12,9 @@ import org.springframework.stereotype.Component;
 @Component
 public class KafkaListenerTest {
 
-    /*@KafkaListener(topics = "test_topic")
-    public void listen (ConsumerRecord<?, ?> record) throws Exception {
-        System.out.printf("topic = %s, offset = %d, value = %s \n", record.topic(), record.offset(), record.value());
-    }*/
+//    @KafkaListener(topics = "test_topic",concurrency = "6")
+//    public void listen (ConsumerRecord<?, ?> record){
+//        System.out.printf("topic = %s, offset = %d, value = %s \n", record.topic(), record.offset(), record.value());
+//    }
 
 }
