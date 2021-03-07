@@ -1,4 +1,3 @@
-/*
 package com.itstudent.springbootdemo.netty;
 
 import io.netty.buffer.ByteBuf;
@@ -10,13 +9,12 @@ import io.netty.util.CharsetUtil;
 
 import java.net.URI;
 
-*/
 /**
  * @ClassName: NioWebSocketHandler
  * @Auther: wenqin.zhao
  * @CreateDate: 2020/1/21 10:57
  * @Description: 自定义的业务Handler
- *//*
+ */
 
 public class NioWebSocketHandler extends SimpleChannelInboundHandler<Object> {
 
@@ -46,4 +44,3 @@ public class NioWebSocketHandler extends SimpleChannelInboundHandler<Object> {
         }
     }
 }
-*/

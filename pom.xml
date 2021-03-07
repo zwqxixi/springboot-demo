@@ -122,11 +122,11 @@
 <!--			<version>2.10.0</version>-->
 <!--		</dependency>-->
 		<!--spring session-->
-		<dependency>
-			<groupId>org.springframework.session</groupId>
-			<artifactId>spring-session-data-redis</artifactId>
-			<version>${spring-session.version}</version>
-		</dependency>
+<!--		<dependency>-->
+<!--			<groupId>org.springframework.session</groupId>-->
+<!--			<artifactId>spring-session-data-redis</artifactId>-->
+<!--			<version>${spring-session.version}</version>-->
+<!--		</dependency>-->
 		<!--kafka-->
 		<dependency>
 			<groupId>org.springframework.kafka</groupId>
@@ -138,7 +138,6 @@
 <!--			<artifactId>kafka-log4j-appender</artifactId>-->
 <!--			<version>${kafka-log4j-appender.version}</version>-->
 <!--		</dependency>-->
-
 		<dependency>
 			<groupId>com.github.danielwegener</groupId>
 			<artifactId>logback-kafka-appender</artifactId>
@@ -214,11 +213,12 @@
 			<artifactId>lombok</artifactId>
 			<scope>provided</scope>
 		</dependency>
-		<!-- 支付宝支付 SDK  -->
+		<!-- Netty 依赖 -->
 		<dependency>
-			<groupId>com.alipay.sdk</groupId>
-			<artifactId>alipay-sdk-java</artifactId>
-			<version>3.7.4.ALL</version>
+			<groupId>io.netty</groupId>
+			<artifactId>netty-all</artifactId>
+            <!--<version>5.0.0.Alpha2</version>-->
+			<version>4.1.24.Final</version>
 		</dependency>
 		<!-- java对象内存布局 工具 -->
 		<dependency>

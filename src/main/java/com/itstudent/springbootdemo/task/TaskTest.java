@@ -26,6 +26,7 @@ public class TaskTest implements CommandLineRunner {
 
     ThreadPoolExecutor threadPoolExecutor = new ThreadPoolExecutor(2,6,60L, TimeUnit.SECONDS,
             new LinkedBlockingQueue<Runnable>(10),new NamedThreadFactory("addThread_To_Queue"));
+
     @Override
     public void run(String... args) throws Exception {
         while (true) {

@@ -1,4 +1,3 @@
-/*
 package com.itstudent.springbootdemo.netty;
 
 import io.netty.channel.ChannelInitializer;
@@ -8,13 +7,12 @@ import io.netty.handler.codec.http.HttpServerCodec;
 import io.netty.handler.logging.LoggingHandler;
 import io.netty.handler.stream.ChunkedWriteHandler;
 
-*/
 /**
  * @ClassName: NioWebSocketChannelInitializer
  * @Auther: wenqin.zhao
  * @CreateDate: 2020/1/21 10:53
  * @Description: 配置Channel通道参数
- *//*
+ */
 
 public class NioWebSocketChannelInitializer extends ChannelInitializer<SocketChannel> {
 
@@ -28,4 +26,3 @@ public class NioWebSocketChannelInitializer extends ChannelInitializer<SocketCha
         socketChannel.pipeline().addLast("handler",new NioWebSocketHandler());//自定义的业务handler
     }
 }
-*/

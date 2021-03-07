@@ -32,7 +32,7 @@ public class KafkaProducerConfig {
         props.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, KafkaBootstrapServer);
         //设置消息发送acks
         props.put(ProducerConfig.ACKS_CONFIG, "1");
-        //设置生产者内存缓冲去大小(发送速率>消费速率  导致send()方法阻塞)
+        //设置生产者内存缓冲去大小(kafka发送数据的时候会根据路由策略选择具体的partition 此时会导致send()方法阻塞)
         props.put(ProducerConfig.BUFFER_MEMORY_CONFIG, 4096);
         //设置生产者发送数据重试次数(如果生产者收到服务器发送失败的消息，则会发起重试,间隔100s);
         props.put(ProducerConfig.RETRIES_CONFIG, 0);

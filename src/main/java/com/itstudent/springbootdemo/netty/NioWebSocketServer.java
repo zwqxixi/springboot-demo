@@ -1,4 +1,3 @@
-/*
 package com.itstudent.springbootdemo.netty;
 
 import io.netty.bootstrap.ServerBootstrap;
@@ -7,13 +6,12 @@ import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
 import lombok.extern.slf4j.Slf4j;
 
-*/
 /**
  * @ClassName: NioWebSocketServer
  * @Auther: wenqin.zhao
  * @CreateDate: 2020/1/21 9:42
  * @Description: NettyServer端启动类
- *//*
+ */
 
 @Slf4j
 public class NioWebSocketServer {
@@ -51,4 +49,3 @@ public class NioWebSocketServer {
         new NioWebSocketServer().init();
     }
 }
-*/
